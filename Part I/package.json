@@ -1,0 +1,29 @@
+{
+  "name": "part-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "blue-tape index.spec.js | faucet"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "blue-tape": "0.1.11",
+    "bluebird": "3.0.6",
+    "bugger": "^2.1.0",
+    "faucet": "0.0.1",
+    "jasmine": "2.3.2",
+    "tape": "4.2.2"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "dependencies": {
+    "babel": "^6.1.18",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-register": "^6.2.0"
+  }
+}
