@@ -48,21 +48,21 @@ if (window.screen.width < 760) {
     return <div dangerouslySetInnerHTML={{__html: domNode.innerHTML}}/>
   }
 
-  const LocationFilter = ({oldFilter}) => {
-    const oldLocationFilter = oldFilter.querySelector('div.section')
+  const LocationSearch = ({oldFilter}) => {
+    const oldLocationSearch = oldFilter.querySelector('div.section')
 
     // This is seriously flawed and could break on any Chrome/Safari update.
     // Yes, I feel bad about it.
     // This could be fixed by defining this in an external stylesheet
     // and simply adding a class here
-    if (oldLocationFilter.webkitAppearance) {
-      oldLocationFilter.style.display = '-webkit-flex'
-      oldLocationFilter.style.webkitJustifyContent = 'space-between'
-      oldLocationFilter.style.webkitAlignItems = 'center'
+    if (oldLocationSearch.webkitAppearance) {
+      oldLocationSearch.style.display = '-webkit-flex'
+      oldLocationSearch.style.webkitJustifyContent = 'space-between'
+      oldLocationSearch.style.webkitAlignItems = 'center'
     } else {
-      oldLocationFilter.style.display = 'flex'
-      oldLocationFilter.style.justifyContent = 'space-between'
-      oldLocationFilter.style.alignItems = 'center'
+      oldLocationSearch.style.display = 'flex'
+      oldLocationSearch.style.justifyContent = 'space-between'
+      oldLocationSearch.style.alignItems = 'center'
     }
 
     return <span dangerouslySetInnerHTML={{__html: oldFilter.outerHTML}}/>
@@ -182,7 +182,7 @@ if (window.screen.width < 760) {
     <div style={{margin: 5}}>
       <AccountBar domNode={domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T')} />
       <SearchBar domNode={domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_R.gb_pd')} />
-      <LocationFilter oldFilter={domNode.querySelector('#left_nav > form')}/>
+      <LocationSearch oldFilter={domNode.querySelector('#left_nav > form')}/>
       <Filter domNode={domNode.querySelector('#left_nav')} />
       <VenueList domNode={domNode.querySelector('#movie_results > div')} />
     </div>
