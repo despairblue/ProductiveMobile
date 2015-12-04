@@ -16,9 +16,17 @@ if (window.screen.width < 760) {
     return (
       <div
         style={{
-          display: '-webkit-flex',
+          // it seems that vendor prefixing `display: flex` in react for inline
+          // styles is not possible since I can't simply define the same key on
+          // an object twice, but this works on initial render since React uses
+          // innerHTML
+          //
+          // @see https://github.com/facebook/react/issues/2020#issuecomment-123402094
+          display: '-webkit-flex; display:flex',
           WebkitJustifyContent: 'space-between',
+          justifyContent: 'space-between',
           WebkitAlignItems: 'center',
+          alignItems: 'center',
           // this is to offset the negative margin on the profile picture,
           // otherwise the picture and the search buttons wouldn't be aligned
           margin: 1
@@ -41,10 +49,20 @@ if (window.screen.width < 760) {
   const LocationFilter = ({oldFilter}) => {
     const oldLocationFilter = oldFilter.querySelector('div.section')
 
-    oldLocationFilter.style.display = '-webkit-flex'
-    oldLocationFilter.style.WebkitJustifyContent = 'space-between'
-    oldLocationFilter.style.WebkitAlignItems = 'center'
     // oldLocationFilter.style.padding = '5px 0'
+    // This is seriously flawed and could break on any Chrome/Safari update.
+    // Yes, I feel bad about it.
+    // This could be fixed by defining this in an external stylesheet
+    // and simply adding a class here
+    if (oldLocationFilter.webkitAppearance) {
+      oldLocationFilter.style.display = '-webkit-flex'
+      oldLocationFilter.style.webkitJustifyContent = 'space-between'
+      oldLocationFilter.style.webkitAlignItems = 'center'
+    } else {
+      oldLocationFilter.style.display = 'flex'
+      oldLocationFilter.style.justifyContent = 'space-between'
+      oldLocationFilter.style.alignItems = 'center'
+    }
 
     return <span dangerouslySetInnerHTML={{__html: oldFilter.outerHTML}}/>
   }
@@ -99,9 +117,14 @@ if (window.screen.width < 760) {
   const Filter = ({domNode}) => (
     <div
       style={{
-        display: '-webkit-flex',
+        display: '-webkit-flex; display: flex',
         WebkitJustifyContent: 'space-between',
+        justifyContent: 'space-between',
         padding: '5px 0',
+        // Chrome on android makes selects wide enough to display the
+        // longest possible option and thus this component might overflow.
+        // Google makes the search tools (Web, Images ... Search Tools) scroll sideways
+        // on mobile. So I think this is a good solution for not interrrupting the layout.
         overflow: 'scroll'
       }}>
       <DateFilter oldFilter={domNode.querySelector('#left_nav > div:nth-child(2)')}/>
