@@ -51,19 +51,17 @@ if (window.screen.width < 760) {
   const LocationSearch = ({oldFilter}) => {
     const oldLocationSearch = oldFilter.querySelector('div.section')
 
-    // This is seriously flawed and could break on any Chrome/Safari update.
-    // Yes, I feel bad about it.
-    // This could be fixed by defining this in an external stylesheet
-    // and simply adding a class here
-    if (oldLocationSearch.webkitAppearance) {
-      oldLocationSearch.style.display = '-webkit-flex'
-      oldLocationSearch.style.webkitJustifyContent = 'space-between'
-      oldLocationSearch.style.webkitAlignItems = 'center'
-    } else {
-      oldLocationSearch.style.display = 'flex'
-      oldLocationSearch.style.justifyContent = 'space-between'
-      oldLocationSearch.style.alignItems = 'center'
-    }
+    // Very much hack. A lot ugly.
+    // This could be fixed by defining it in an external stylesheet
+    // and simply adding a class here.
+    oldLocationSearch.setAttribute('style', `
+      display: flex;
+      display: -webkit-flex;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      align-items: center;
+      -webkit-align-items: center;
+    `)
 
     return <span dangerouslySetInnerHTML={{__html: oldFilter.outerHTML}}/>
   }
