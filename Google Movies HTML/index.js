@@ -9,8 +9,8 @@ import ReactDOM from 'react-dom'
 // This works on iOS with Chrome and Safari and on Android with Chrome and Firefox
 if (window.screen.width < 760) {
   const AccountBar = ({domNode}) => {
-    const name = domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T > div.gb_ae.gb_R.gb_oe.gb_he')
-    const jewels = domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T > div.gb_Ob.gb_oe.gb_R')
+    const name = domNode.querySelector('div.gb_ae.gb_R.gb_oe.gb_he')
+    const jewels = domNode.querySelector('div.gb_Ob.gb_oe.gb_R')
 
     return (
       <div
@@ -37,12 +37,15 @@ if (window.screen.width < 760) {
   }
 
   const SearchBar = ({domNode}) => {
-    const oldSearchBar = domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_R.gb_pd')
-    const searchBarContainer = oldSearchBar.querySelector('#gbq2')
+    const searchBarContainer = domNode.querySelector('#gbq2')
 
+    // I could have also used a negative margin, like `marginTop: -10`, for
+    // offsetting the inner padding, but redefining it seems a little cleaner
+    // since the element has an id and I don't have to select it by some
+    // arbitrary classes and relative position
     searchBarContainer.style.padding = '5px 0'
 
-    return <div dangerouslySetInnerHTML={{__html: oldSearchBar.innerHTML}}/>
+    return <div dangerouslySetInnerHTML={{__html: domNode.innerHTML}}/>
   }
 
   const LocationFilter = ({oldFilter}) => {
@@ -177,10 +180,10 @@ if (window.screen.width < 760) {
 
   const Root = ({domNode}) => (
     <div style={{margin: 5}}>
-      <AccountBar domNode={domNode} />
-      <SearchBar domNode={domNode} />
+      <AccountBar domNode={domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T')} />
+      <SearchBar domNode={domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_R.gb_pd')} />
       <LocationFilter oldFilter={domNode.querySelector('#left_nav > form')}/>
-      <Filter domNode={domNode} />
+      <Filter domNode={domNode.querySelector('#left_nav')} />
       <VenueList domNode={domNode.querySelector('#movie_results > div')} />
     </div>
   )
