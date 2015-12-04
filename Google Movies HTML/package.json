@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "webpack",
-    "dev-server": "webpack-dev-server --host 0.0.0.0"
+    "prestart": "echo 'Open \"http://0.0.0.0:8080/Movie%20Showtimes%20-%20Google%20Search.htm\" in your Browser.'",
+    "start": "webpack-dev-server --host 0.0.0.0"
   },
   "author": "",
   "license": "ISC",
