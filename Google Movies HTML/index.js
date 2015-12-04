@@ -51,28 +51,28 @@ if (window.screen.width < 760) {
 
   const DropDownFilter = ({oldFilter}) => (
     <select
-      value={oldFilter.querySelector('div b').innerText}
+      value={oldFilter.querySelector('div b').textContent}
       onChange={event => window.location = event.target.value}
       >
       {Array.prototype.map.call(oldFilter.querySelectorAll('div b, div a'), node => {
         if (node.nodeName.toLowerCase() === 'b') {
           return (
             <option
-              key={node.innerText.substring(2)}
-              value={node.innerText.substring(2)}
+              key={node.textContent.substring(2)}
+              value={node.textContent.substring(2)}
               >
-                {node.innerText.substring(2)}
+                {node.textContent.substring(2)}
               </option>
             )
         } else {
           return (
             // I'm (mis)using the value prop here to save the href the orginal filter was pointing to
             <option
-              key={node.innerText}
+              key={node.textContent}
               value={node.href}
               data-href={node.href}
               >
-                {node.innerText}
+                {node.textContent}
               </option>
           )
         }
