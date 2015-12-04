@@ -38,6 +38,11 @@ I opted for the second case here since it's the one that requires the least calc
 
 ## Part II
 
+<img src='https://github.com/despairblue/ProductiveMobile/blob/master/screenshot.png' height='400'>  
+:arrow_down:  
+<img src='https://github.com/despairblue/ProductiveMobile/blob/master/screenshot2.png' width='200'>
+<img src='https://github.com/despairblue/ProductiveMobile/blob/master/screenshot3.png' width='200'>
+
 ### Running It
 ```bash
 cd 'Google Movies HTML'
