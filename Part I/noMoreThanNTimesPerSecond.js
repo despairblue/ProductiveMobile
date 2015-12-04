@@ -25,22 +25,18 @@ module.exports = exports = (fn, n) => {
       calls = 0
     }
 
+    // call it again if possible
     if (calls < n) {
       calls = calls + 1
 
       lastResult = tryCatch(fn, args)
+    }
 
-      if (lastResult === errorObject) {
-        throw errorObject.value
-      } else {
-        return lastResult
-      }
+    // return or throw
+    if (lastResult === errorObject) {
+      throw errorObject.value
     } else {
-      if (lastResult === errorObject) {
-        throw errorObject.value
-      } else {
-        return lastResult
-      }
+      return lastResult
     }
   }
 }
