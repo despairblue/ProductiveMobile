@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "blue-tape index.spec.js | faucet"
+    "test": "blue-tape index.spec.js | faucet",
+    "build": "babel -d build noMoreThanNTimesPerSecond.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.3.13",
     "blue-tape": "0.1.11",
     "bluebird": "3.0.6",
     "bugger": "^2.1.0",
