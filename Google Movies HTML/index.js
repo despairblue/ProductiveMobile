@@ -11,7 +11,6 @@ if (window.screen.width < 760) {
   const AccountBar = ({domNode}) => {
     const name = domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T > div.gb_ae.gb_R.gb_oe.gb_he')
     const jewels = domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T > div.gb_Ob.gb_oe.gb_R')
-    // const profilePicture = domNode.querySelector('body > div:nth-child(14) > div > div:nth-child(1) > div:nth-child(2) > div > div.gb_Ta.gb_Qb.gb_oe.gb_R.gb_cb > div.gb_1b.gb_Va.gb_oe.gb_R > a > span')
 
     return (
       <div
@@ -49,7 +48,6 @@ if (window.screen.width < 760) {
   const LocationFilter = ({oldFilter}) => {
     const oldLocationFilter = oldFilter.querySelector('div.section')
 
-    // oldLocationFilter.style.padding = '5px 0'
     // This is seriously flawed and could break on any Chrome/Safari update.
     // Yes, I feel bad about it.
     // This could be fixed by defining this in an external stylesheet
