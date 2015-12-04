@@ -2,9 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 // Using a media query like `window.matchMedia('only screen and (max-width:
-// 760px)')` would probably be better, but the originial static site is missing
+// 760px)')` would probably be better, but the original static site is missing
 // a viewport meta-tag that prevents scaling, thus the site will be scaled in
-// most mobile browser and the media query will always not match
+// most mobile browsers and the media query will never match
 //
 // This works on iOS with Chrome and Safari and on Android with Chrome and Firefox
 if (window.screen.width < 760) {
@@ -15,10 +15,10 @@ if (window.screen.width < 760) {
     return (
       <div
         style={{
-          // it seems that vendor prefixing `display: flex` in react for inline
+          // It seems that vendor prefixing `display: flex` in react for inline
           // styles is not possible since I can't simply define the same key on
           // an object twice, but this works on initial render since React uses
-          // innerHTML
+          // innerHTML to create elements.
           //
           // @see https://github.com/facebook/react/issues/2020#issuecomment-123402094
           display: '-webkit-flex; display:flex',
@@ -26,8 +26,8 @@ if (window.screen.width < 760) {
           justifyContent: 'space-between',
           WebkitAlignItems: 'center',
           alignItems: 'center',
-          // this is to offset the negative margin on the profile picture,
-          // otherwise the picture and the search buttons wouldn't be aligned
+          // This is to offset the negative margin on the profile picture,
+          // otherwise the picture and the search button wouldn't be aligned.
           margin: 1
         }}>
         <div dangerouslySetInnerHTML={{__html: name.outerHTML}}/>
@@ -67,6 +67,8 @@ if (window.screen.width < 760) {
   }
 
   const DropDownFilter = ({oldFilter}) => (
+    // Make sure that the filters still work, even though they open a non-existent
+    // page due to the different baseURI
     <select
       value={oldFilter.querySelector('div b').textContent}
       onChange={event => window.location = event.target.value}
@@ -83,7 +85,7 @@ if (window.screen.width < 760) {
             )
         } else {
           return (
-            // I'm (mis)using the value prop here to save the href the orginal filter was pointing to
+            // I'm (mis)using the value prop here to save the `href` the original filter was pointing to
             <option
               key={node.textContent}
               value={node.href}
@@ -123,7 +125,7 @@ if (window.screen.width < 760) {
         // Chrome on android makes selects wide enough to display the
         // longest possible option and thus this component might overflow.
         // Google makes the search tools (Web, Images ... Search Tools) scroll sideways
-        // on mobile. So I think this is a good solution for not interrrupting the layout.
+        // on mobile. So I think this is a good solution for not interrupting the layout.
         overflow: 'scroll'
       }}>
       <DateFilter oldFilter={domNode.querySelector('#left_nav > div:nth-child(2)')}/>
@@ -136,6 +138,8 @@ if (window.screen.width < 760) {
   const Movie = ({domNode}) => (
     <div
       style={{
+        // resembles material card style
+        // which I think is a good fit for long lists on mobile
         padding: 5,
         marginTop: '10px',
         backgroundColor: '#FFFFFF',
@@ -158,6 +162,8 @@ if (window.screen.width < 760) {
   const Venue = ({domNode}) => (
     <div
       style={{
+        // resembles material card style
+        // which I think is a good fit for long lists on mobile
         padding: 10,
         margin: '10px 0',
         backgroundColor: '#F8F8F8',

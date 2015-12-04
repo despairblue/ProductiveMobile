@@ -3,7 +3,7 @@ module.exports = exports = (fn, n) => {
   let lastResult
   let calls = 0
 
-  // error handling shamnelessly stolen from
+  // error handling shamelessly stolen from
   // https://github.com/petkaantonov/bluebird/wiki/Optimization-killers#2-unsupported-syntax
   // @see workarounds further down the chapter
   const errorObject = {value: null}

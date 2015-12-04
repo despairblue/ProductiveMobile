@@ -52,7 +52,7 @@ test('noMoreThan1TimesPerSecond throwing no Error', t => {
     .then(() => t.end())
 })
 
-// will fail
+// will fail since I chose not to implement that case, see the README.md
 // test('slidingTimeWindow', t => {
 //   const fun = noMoreThanNTimesPerSecond(addToLastGenerator(0), 3)
 //
@@ -86,7 +86,7 @@ test('noMoreThan3TimesPerSecond throwing an Error', t => {
       t.ok(e1 instanceof Error, 'throws an error')
       t.ok(e2 instanceof Error, 'throws an error')
 
-      t.equal(e1, e2, 'rethrew the last error')
+      t.equal(e1, e2, 'rethrows the last error')
     })
     .delay(1001)
     .then(() => {
@@ -104,7 +104,7 @@ test('noMoreThan3TimesPerSecond throwing an Error', t => {
       t.ok(e1 instanceof Error, 'throws an error')
       t.ok(e2 instanceof Error, 'throws an error')
 
-      t.equal(e1, e2, 'rethrew the last error')
+      t.equal(e1, e2, 'rethrows the last error')
     })
     .then(() => t.end())
 })
