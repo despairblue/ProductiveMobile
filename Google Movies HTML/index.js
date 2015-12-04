@@ -183,7 +183,7 @@ if (window.screen.width < 760) {
   )
 
   const Root = ({domNode}) => (
-    <div style={{margin: 5}}>
+    <div style={{margin: 10}}>
       <AccountBar domNode={domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T')} />
       <SearchBar domNode={domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_R.gb_pd')} />
       <LocationSearch oldFilter={domNode.querySelector('#left_nav > form')}/>
@@ -203,8 +203,6 @@ if (window.screen.width < 760) {
   meta.name = 'viewport'
   meta.content = 'width=device-width, initial-scale=1'
   document.head.appendChild(meta)
-
-  document.body.style.margin = '3px'
 
   ReactDOM.render(<Root domNode={document.body}/>, container)
 }
