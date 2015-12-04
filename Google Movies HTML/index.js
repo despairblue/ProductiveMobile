@@ -1,9 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const isMobile = window.matchMedia('only screen and (max-width: 760px)')
-
-if (/Mobi/i.test(navigator.userAgent)) {
+// Using a media query like `window.matchMedia('only screen and (max-width:
+// 760px)')` would probably be better, but the originial static site is missing
+// a viewport meta-tag that prevents scaling, thus the site will be scaled in
+// most mobile browser and the media query will always not match
+//
+// This works on iOS with Chrome and Safari and on Android with Chrome and Firefox
+if (window.screen.width < 760) {
   const AccountBar = ({domNode}) => {
     const name = domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T > div.gb_ae.gb_R.gb_oe.gb_he')
     const jewels = domNode.querySelector('#gb > div.gb_td.gb_oe > div.gb_La.gb_oe.gb_R.gb_ne.gb_T > div.gb_Ob.gb_oe.gb_R')
